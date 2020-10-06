@@ -10,7 +10,7 @@ using Random = UnityEngine.Random;
  */
 public class Spawner : MonoBehaviour
 {
-    [SerializeField] private List<GameObject> spawnableObjects;
+    [SerializeField] private List<GameObject> spawnableObjects;   // set in the inspector??
     
     [Tooltip("The Spawner waits a random number of seconds between these two interval each time a object was spawned.")]
     [SerializeField] private float minSpawnIntervalInSeconds;
@@ -34,7 +34,7 @@ public class Spawner : MonoBehaviour
         spawnedObjects.Add(spawned);
         
         yield return new WaitForSeconds(Random.Range(minSpawnIntervalInSeconds, maxSpawnIntervalInSeconds));
-        StartCoroutine(nameof(Spawn));
+        StartCoroutine(nameof(Spawn));    // recursive call to Spawn()
     }
     private void DestroyAllSpawnedObjects()
     {

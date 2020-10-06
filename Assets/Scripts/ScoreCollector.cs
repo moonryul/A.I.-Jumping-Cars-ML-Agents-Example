@@ -16,7 +16,7 @@ public class ScoreCollector : MonoBehaviour
     [SerializeField] private TextMeshProUGUI display;
     
     private StatsRecorder statsRecorder;
-    private int highScore = 0;
+    private int highScore = 0;       // the highest score before  collision happens.
     void Awake()
     {
         Instance = this;
@@ -25,7 +25,7 @@ public class ScoreCollector : MonoBehaviour
 
     public void AddScore(int score)
     {
-        if (score > highScore)
+        if (score > highScore)    // highScore is the highest score achieved before the last collision.
         {
             highScore = score;
             display.text = score.ToString();
